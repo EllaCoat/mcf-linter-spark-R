@@ -1,4 +1,6 @@
-# mcf-linter-spark
+# mcf-linter-spark-R
+
+mcf-linter-spark の Rust 版です。いまは [EllaCoat/mcf-linter-spark](https://github.com/EllaCoat/mcf-linter-spark) で、mcf-linter-spark を TypeScript で作り直しています。
 
 Minecraft: Java Edition 1.20.3〜26.3 のデータパックの `.mcfunction` と JSON を検査する linter です。Datapack Helper Plus 3.x（DHP）の lint 設定と [IMP-Doc](https://github.com/SpyglassMC/Spyglass/wiki/IMP-Doc) の公開範囲に沿って診断し、CI 用のコマンドと VSCode 拡張機能（language server）の両方で動きます。
 
@@ -22,13 +24,13 @@ Minecraft: Java Edition 1.20.3〜26.3 のデータパックの `.mcfunction` と
 
 ### VSCode 拡張機能
 
-[Releases](https://github.com/EllaCoat/mcf-linter-spark/releases) から VSIX をダウンロードし、コマンドパレットの **Extensions: Install from VSIX...** で入れます。Releases の VSIX は Windows（x64）用で、VSCode 1.90 以上で動きます。
+[Releases](https://github.com/EllaCoat/mcf-linter-spark-R/releases) から VSIX をダウンロードし、コマンドパレットの **Extensions: Install from VSIX...** で入れます。Releases の VSIX は Windows（x64）用で、VSCode 1.90 以上で動きます。
 
 - ほかの OS では、Rust（stable）、Node.js、pnpm を使ってソースからビルドします。できた `mcf-linter-spark-<version>.vsix` には、ビルドした OS 用の実行ファイルが入ります。
 
 ```sh
-git clone https://github.com/EllaCoat/mcf-linter-spark
-cd mcf-linter-spark
+git clone https://github.com/EllaCoat/mcf-linter-spark-R
+cd mcf-linter-spark-R
 cargo build --release
 cd editors/vscode
 pnpm install --frozen-lockfile
@@ -40,7 +42,7 @@ pnpm run package
 Rust（stable）でビルドして入れます。
 
 ```sh
-cargo install --git https://github.com/EllaCoat/mcf-linter-spark --locked mcf-linter-spark
+cargo install --git https://github.com/EllaCoat/mcf-linter-spark-R --locked mcf-linter-spark
 ```
 
 ## VSCode 拡張機能
@@ -88,7 +90,7 @@ GitHub Actions でデータパックを検査する設定例です。
   with:
     path: ~/.cache/mcf-linter-spark
     key: mcf-linter-spark-data-1.20.4-c85548aae6f2-5aab1da2ff00
-- run: cargo install --git https://github.com/EllaCoat/mcf-linter-spark --tag v0.2.0 --locked mcf-linter-spark
+- run: cargo install --git https://github.com/EllaCoat/mcf-linter-spark-R --tag v0.2.0 --locked mcf-linter-spark
 - run: mcf-linter-spark check . --ignore 'animated_java:**' --format github
 ```
 
